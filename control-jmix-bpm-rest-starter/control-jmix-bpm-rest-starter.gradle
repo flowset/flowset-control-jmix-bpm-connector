@@ -1,0 +1,17 @@
+base {
+    archivesName = 'control-jmix-bpm-rest-starter'
+}
+
+jmix {
+    entitiesEnhancing {
+        enabled = false
+    }
+}
+
+dependencies {
+    api project(':control-jmix-bpm-rest')
+
+    implementation 'io.jmix.core:jmix-core'
+
+    implementation 'org.springframework.boot:spring-boot-autoconfigure'
+}

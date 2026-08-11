@@ -1,0 +1,44 @@
+base {
+    archivesName = 'control-jmix-bpm-rest'
+}
+
+jmix {
+    entitiesEnhancing {
+        enabled = false
+    }
+}
+
+
+dependencies {
+    implementation 'io.jmix.core:jmix-core-starter'
+
+    // Jmix BPM
+    compileOnly "io.jmix.bpm:jmix-bpm:${jmixBpmVersion}"
+
+    // Flowable REST
+    api "org.flowable:flowable-spring-boot-starter-process-rest:${flowableVersion}"
+    api "org.flowable:flowable-spring-boot-starter-dmn-rest:${flowableVersion}"
+
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
+    testImplementation 'org.springframework.boot:spring-boot-starter-web'
+
+    testImplementation "org.flowable:flowable-dmn-spring-configurator:${flowableVersion}"
+    testImplementation "io.jmix.bpm:jmix-bpm:${jmixBpmVersion}"
+
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    testRuntimeOnly 'org.hsqldb:hsqldb'
+}
+
+
+
+configurations.implementation {
+    exclude group: 'com.vaadin', module: 'hilla'
+    exclude group: 'com.vaadin', module: 'hilla-dev'
+    exclude group: 'com.vaadin', module: 'copilot'
+}
+
+test {
+    useJUnitPlatform()
+}

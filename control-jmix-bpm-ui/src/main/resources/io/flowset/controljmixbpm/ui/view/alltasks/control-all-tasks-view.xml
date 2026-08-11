@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<view xmlns="http://jmix.io/schema/flowui/view"
+      title="msg://io.jmix.bpmflowui.view.alltasks/allTasksView.title"
+      messagesGroup="io.jmix.bpmflowui.view.alltasks"
+      extends="io/jmix/bpmflowui/view/alltasks/all-tasks-view.xml">
+    <layout>
+        <hbox id="buttonsPanel">
+            <button id="openInControlButton" action="tasksDataGrid.openInControl"/>
+        </hbox>
+        <dataGrid id="tasksDataGrid">
+            <actions>
+                <action id="openInControl" text="msg://io.flowset.controljmixbpm.ui.view.alltasks/openInControl.text"
+                        description="msg://io.flowset.controljmixbpm.ui.view.alltasks/openInControl.title"
+                        type="ctrint_openAllTasksInControl"/>
+            </actions>
+        </dataGrid>
+    </layout>
+</view>

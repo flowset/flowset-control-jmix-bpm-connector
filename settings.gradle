@@ -1,0 +1,10 @@
+rootProject.name = 'control-jmix-bpm-integration'
+
+include 'control-jmix-bpm-rest'
+include 'control-jmix-bpm-rest-starter'
+include 'control-jmix-bpm-ui'
+include 'control-jmix-bpm-ui-starter'
+
+rootProject.children.each { p1 ->
+    p1.buildFileName = "${p1.name}.gradle"
+}

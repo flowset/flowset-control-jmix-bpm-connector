@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<view xmlns="http://jmix.io/schema/flowui/view"
+      title="msg://io.jmix.bpmflowui.view.processinstance/processInstanceDetailView.title"
+      messagesGroup="io.jmix.bpmflowui.view.processinstance"
+      extends="io/jmix/bpmflowui/view/processinstance/process-instance-detail-view.xml">
+    <actions>
+        <!-- A view-level action: Jmix binds its target to this view, from which it reads the edited entity. -->
+        <action id="openInControl"
+                type="ctrint_openProcessInstanceDetailInControl"
+                text="msg://io.flowset.controljmixbpm.ui.view.processinstancedetail/openInControl.text"
+                description="msg://io.flowset.controljmixbpm.ui.view.processinstancedetail/openInControl.title"/>
+    </actions>
+    <layout>
+        <!-- 'upperPanel' must be repeated: the XML inheritance processor matches direct children only. -->
+        <vbox id="upperPanel">
+            <hbox id="processActionsPanel">
+                <button id="openInControlBtn" action="openInControl"
+                        classNames="external-action-in-control"/>
+            </hbox>
+        </vbox>
+    </layout>
+</view>

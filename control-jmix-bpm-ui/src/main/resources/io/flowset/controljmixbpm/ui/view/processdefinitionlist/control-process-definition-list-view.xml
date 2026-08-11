@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<view xmlns="http://jmix.io/schema/flowui/view"
+      title="msg://io.jmix.bpmflowui.view.processdefinition/processDefinitionList.title"
+      messagesGroup="io.jmix.bpmflowui.view.processdefinition"
+      extends="io/jmix/bpmflowui/view/processdefinition/process-definition-list-view.xml">
+    <layout>
+        <hbox id="buttonsPanel">
+            <button id="openInControlBtn" action="processDefinitionsGrid.openInControl"/>
+        </hbox>
+        <dataGrid id="processDefinitionsGrid">
+            <actions>
+                <!-- Declared on the grid so Jmix binds the action's target to it automatically. -->
+                <action id="openInControl"
+                        type="ctrint_openProcessDefinitionInControl"
+                        text="msg://io.flowset.controljmixbpm.ui.view.processdefinitionlist/openInControl.text"
+                        description="msg://io.flowset.controljmixbpm.ui.view.processdefinitionlist/openInControl.title"/>
+            </actions>
+        </dataGrid>
+    </layout>
+</view>
