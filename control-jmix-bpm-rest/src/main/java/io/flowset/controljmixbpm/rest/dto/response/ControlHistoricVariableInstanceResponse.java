@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) Haulmont 2026. All Rights Reserved.
+ * Use is subject to license terms.
+ */
+
 package io.flowset.controljmixbpm.rest.dto.response;
 
 import org.flowable.common.rest.util.DateToStringSerializer;

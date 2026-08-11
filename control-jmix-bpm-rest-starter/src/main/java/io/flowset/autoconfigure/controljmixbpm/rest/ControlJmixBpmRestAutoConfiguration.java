@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) Haulmont 2026. All Rights Reserved.
+ * Use is subject to license terms.
+ */
+
 package io.flowset.autoconfigure.controljmixbpm.rest;
 
 import io.flowset.controljmixbpm.rest.ControlJmixBpmRestConfiguration;
