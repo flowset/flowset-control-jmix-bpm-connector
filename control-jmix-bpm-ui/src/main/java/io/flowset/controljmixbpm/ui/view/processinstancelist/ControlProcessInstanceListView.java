@@ -19,9 +19,15 @@ public class ControlProcessInstanceListView extends ProcessInstanceListView {
     protected OpenProcessInstanceInControlAction openInControlAction;
 
     @Subscribe
-    public void onInit(final InitEvent event) {
-        // The filter fields belong to the base descriptor and cannot be referenced from the action declaration,
-        // so the action is handed them here. It reads their values on every invocation.
-        openInControlAction.setFilterFields(processDefinitionComboBox, businessKeyField, processStateComboBox);
+    public void onBeforeShow(final BeforeShowEvent event) {
+        initActions();
     }
+
+    protected void initActions() {
+
+        openInControlAction.setBusinessKeyFilterValueProvider(() -> businessKeyField.getValue());
+        openInControlAction.setProcessFilterValueProvider(() -> processDefinitionComboBox.getValue());
+        openInControlAction.setStateFilterValueProvider(() -> processStateComboBox.getValue());
+    }
+
 }

@@ -5,13 +5,13 @@
 
 package io.flowset.controljmixbpm.ui.action;
 
-import com.vaadin.flow.component.combobox.ComboBox;
-import com.vaadin.flow.component.textfield.TextField;
 import io.jmix.bpm.entity.ProcessDefinitionData;
 import io.jmix.bpm.entity.ProcessInstanceData;
 import io.jmix.flowui.action.ActionType;
 import org.apache.commons.lang3.StringUtils;
 import org.jspecify.annotations.Nullable;
+
+import java.util.function.Supplier;
 
 /**
  * Opens process instances in Flowset Control.
@@ -39,9 +39,10 @@ public class OpenProcessInstanceInControlAction
     protected static final String MODE_COMPLETED = "completed";
     protected static final String MODE_ALL = "all";
 
-    protected @Nullable ComboBox<ProcessDefinitionData> processDefinitionField;
-    protected @Nullable TextField businessKeyField;
-    protected @Nullable ComboBox<String> stateField;
+    protected Supplier<ProcessDefinitionData> processFilterValueProvider;
+    protected Supplier<String> businessKeyFilterValueProvider;
+    protected Supplier<String> stateFilterValueProvider;
+
 
     public OpenProcessInstanceInControlAction() {
         this(ID);
@@ -51,16 +52,17 @@ public class OpenProcessInstanceInControlAction
         super(id);
     }
 
-    /**
-     * Sets the filter fields used to pre-filter the list when no row is selected. Their values are read at
-     * execution time, so the current user input is always applied.
-     */
-    public void setFilterFields(@Nullable ComboBox<ProcessDefinitionData> processDefinitionField,
-                                @Nullable TextField businessKeyField,
-                                @Nullable ComboBox<String> stateField) {
-        this.processDefinitionField = processDefinitionField;
-        this.businessKeyField = businessKeyField;
-        this.stateField = stateField;
+
+    public void setProcessFilterValueProvider(Supplier<ProcessDefinitionData> processFilterValueProvider) {
+        this.processFilterValueProvider = processFilterValueProvider;
+    }
+
+    public void setBusinessKeyFilterValueProvider(Supplier<String> businessKeyFilterValueProvider) {
+        this.businessKeyFilterValueProvider = businessKeyFilterValueProvider;
+    }
+
+    public void setStateFilterValueProvider(Supplier<String> stateFilterValueProvider) {
+        this.stateFilterValueProvider = stateFilterValueProvider;
     }
 
     @Override
@@ -72,16 +74,16 @@ public class OpenProcessInstanceInControlAction
     protected String buildListUrl() {
         return controlUrlBuilder.processInstances()
                 .paramIfNotBlank("processKey", resolveProcessKey())
-                .paramIfNotBlank("businessKey", businessKeyField != null ? businessKeyField.getValue() : null)
+                .paramIfNotBlank("businessKey", businessKeyFilterValueProvider != null ? businessKeyFilterValueProvider.get() : null)
                 .paramIfNotBlank("mode", resolveMode())
                 .build();
     }
 
     protected @Nullable String resolveProcessKey() {
-        if (processDefinitionField == null) {
+        if (processFilterValueProvider == null) {
             return null;
         }
-        ProcessDefinitionData processDefinition = processDefinitionField.getValue();
+        ProcessDefinitionData processDefinition = processFilterValueProvider.get();
         return processDefinition != null ? processDefinition.getKey() : null;
     }
 
@@ -90,7 +92,7 @@ public class OpenProcessInstanceInControlAction
      * list is widened to every instance; an unrecognised state leaves the mode to Control's own default.
      */
     protected @Nullable String resolveMode() {
-        String state = stateField != null ? stateField.getValue() : null;
+        String state = stateFilterValueProvider != null ? stateFilterValueProvider.get() : null;
         if (StringUtils.isBlank(state)) {
             return MODE_ALL;
         }
