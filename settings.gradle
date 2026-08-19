@@ -1,9 +1,9 @@
-rootProject.name = 'control-jmix-bpm-integration'
+rootProject.name = 'flowset-control-jmix-bpm-connector'
 
-include 'control-jmix-bpm-rest'
-include 'control-jmix-bpm-rest-starter'
-include 'control-jmix-bpm-ui'
-include 'control-jmix-bpm-ui-starter'
+include 'flowset-control-jmix-bpm-rest'
+include 'flowset-control-jmix-bpm-rest-starter'
+include 'flowset-control-jmix-bpm-flowui'
+include 'flowset-control-jmix-bpm-flowui-starter'
 
 rootProject.children.each { p1 ->
     p1.buildFileName = "${p1.name}.gradle"

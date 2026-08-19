@@ -9,8 +9,8 @@ instance, definition or task straight to the same record in Control.
 
 | Starter | What it adds to your application |
 |---|---|
-| `control-jmix-bpm-rest-starter` | The Flowable REST API (`/process-api`, `/dmn-api`, `/external-job-api`), plus the `/control/**` endpoints Flowset Control calls on top of it to read and manage this engine — process definitions and instances, history, variables, DMN deployments |
-| `control-jmix-bpm-ui-starter` | *Open in Control* / *Evaluate in Control* buttons on the standard Jmix BPM screens, linking straight to the matching record in Control |
+| `flowset-control-jmix-bpm-rest-starter` | The Flowable REST API (`/process-api`, `/dmn-api`, `/external-job-api`), plus the `/control/**` endpoints Flowset Control calls on top of it to read and manage this engine — process definitions and instances, history, variables, DMN deployments |
+| `flowset-control-jmix-bpm-flowui-starter` | *Open in Control* / *Evaluate in Control* buttons on the standard Jmix BPM screens, linking straight to the matching record in Control |
 
 ## Compatibility
 
@@ -26,8 +26,8 @@ in itself.
 Declare the starters you need:
 
 ```groovy
-implementation 'io.flowset.control:control-jmix-bpm-rest-starter:0.0.1-SNAPSHOT'
-implementation 'io.flowset.control:control-jmix-bpm-ui-starter:0.0.1-SNAPSHOT'
+implementation 'io.flowset.control:flowset-control-jmix-bpm-rest-starter:0.0.1-SNAPSHOT'
+implementation 'io.flowset.control:flowset-control-jmix-bpm-flowui-starter:0.0.1-SNAPSHOT'
 ```
 
 Adding the dependency is enough — the add-on activates itself, with no configuration class to register.
@@ -72,7 +72,7 @@ then references it as `<grid id>.<action id>`:
     </hbox>
     <dataGrid id="processInstancesGrid">
         <actions>
-            <action id="openInControl" type="ctrint_openProcessInstanceInControl"/>
+            <action id="openInControl" type="ctrcnt_openProcessInstanceInControl"/>
         </actions>
     </dataGrid>
 </layout>
@@ -82,7 +82,7 @@ On detail screens, declare it in the view-level `<actions>` element and referenc
 
 ```xml
 <actions>
-    <action id="openInControl" type="ctrint_openProcessInstanceDetailInControl"/>
+    <action id="openInControl" type="ctrcnt_openProcessInstanceDetailInControl"/>
 </actions>
 <layout>
     <hbox id="processActionsPanel">
@@ -95,26 +95,25 @@ Which action type belongs to which screen:
 
 | Standard Jmix BPM view id | Action type | Declare in |
 |---|---|---|
-| `bpm_ProcessInstance.list` | `ctrint_openProcessInstanceInControl` | data grid `<actions>` |
-| `bpm_ProcessInstanceData.detail` | `ctrint_openProcessInstanceDetailInControl` | view `<actions>` |
-| `bpm_ProcessDefinition.list` | `ctrint_openProcessDefinitionInControl` | data grid `<actions>` |
-| `bpm_ProcessDefinition.detail` | `ctrint_openProcessDefinitionDetailInControl` | view `<actions>` |
-| `bpm_DmnDecisionTableListView` | `ctrint_openDmnDecisionInControl`, `ctrint_evaluateDmnDecisionInControl` | data grid `<actions>` |
-| `bpm_DmnDecisionTableDetailView` | `ctrint_openDmnDecisionDetailInControl` | view `<actions>` |
-| `bpm_AllTasksView` | `ctrint_openAllTasksInControl` | data grid `<actions>` |
+| `bpm_ProcessInstance.list` | `ctrcnt_openProcessInstanceInControl` | data grid `<actions>` |
+| `bpm_ProcessInstanceData.detail` | `ctrcnt_openProcessInstanceDetailInControl` | view `<actions>` |
+| `bpm_ProcessDefinition.list` | `ctrcnt_openProcessDefinitionInControl` | data grid `<actions>` |
+| `bpm_ProcessDefinition.detail` | `ctrcnt_openProcessDefinitionDetailInControl` | view `<actions>` |
+| `bpm_DmnDecisionTableListView` | `ctrcnt_openDmnDecisionInControl`, `ctrcnt_evaluateDmnDecisionInControl` | data grid `<actions>` |
+| `bpm_DmnDecisionTableDetailView` | `ctrcnt_openDmnDecisionDetailInControl` | view `<actions>` |
+| `bpm_AllTasksView` | `ctrcnt_openAllTasksInControl` | data grid `<actions>` |
 
 What to expect from the actions:
 
 - List actions open the selected row in Control when exactly one row is selected, and the corresponding filtered list
   otherwise.
-- Each action supplies its own icon and stays disabled while `flowset.ui.control-url` is unset, so it is safe to
-  declare unconditionally.
-- Set `text` and `description` on the `<action>` element — the add-on's own labels are not inherited by your
-  descriptor.
-- On the process-instance list, the link to the filtered list only carries filter values if the action is given the
-  view's filter fields, via
-  `openInControlAction.setFilterFields(processDefinitionComboBox, businessKeyField, processStateComboBox)` in the
-  view's `InitEvent`. Without it the action still works, it just opens an unfiltered list.
+- Each action supplies its own icon, text and tooltip, and stays disabled while `ControlJmixBpmUiProperties` is unset,
+  so it is safe to declare unconditionally. Set `text` or `description` on the `<action>` element to override them.
+- The filtered list only carries filter values if the action is given a value provider per filter in the view's
+  `InitEvent`, for example
+  `openInControlAction.setBusinessKeyFilterValueProvider(() -> businessKeyField.getValue())` on the process-instance
+  list. The providers are read on every invocation, so the current user input is always applied. Without them the
+  action still works, it just opens an unfiltered list.
 
 `bpm_DecisionTableModelerView` is absent from the table on purpose: it carries no button. The add-on's version of that
 screen accepts an inbound `decisionDefId` query parameter so links *from* Control open the right decision in the

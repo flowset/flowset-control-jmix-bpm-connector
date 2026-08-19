@@ -36,7 +36,7 @@ subprojects {
 
     jmix {
         bomVersion = '3.0.0'
-        projectId = 'ctrint'
+        projectId = 'ctrcnt'
     }
 
     group = this.group
@@ -52,16 +52,19 @@ subprojects {
 
     afterEvaluate {
         publishing {
-            repositories {
-                maven {
-                    url = 'https://myrepo/releases/'
-                    credentials {
-                        username rootProject.hasProperty('uploadUser') ? rootProject['uploadUser'] : 'admin'
-                        password rootProject.hasProperty('uploadPassword') ? rootProject['uploadPassword'] : 'admin'
+            if (rootProject.hasProperty('flowsetUploadUrl')) {
+                repositories {
+                    maven {
+                        url = rootProject['flowsetUploadUrl']
+                        credentials {
+                            username = rootProject['flowsetUploadUser']
+                            password = rootProject['flowsetUploadPassword']
+                        }
+                        allowInsecureProtocol = true
                     }
-                    allowInsecureProtocol = true
                 }
             }
+
             publications {
                 javaMaven(MavenPublication) {
                     artifactId = project.base.archivesName.get()

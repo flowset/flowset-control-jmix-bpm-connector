@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--
+  ~ Copyright (c) Haulmont 2026. All Rights Reserved.
+  ~ Use is subject to license terms.
+  -->
+
+<view xmlns="http://jmix.io/schema/flowui/view"
+      title="msg://io.jmix.bpmflowui.view.dmndecisiontable/decisionTable.title"
+      messagesGroup="io.jmix.bpmflowui.view.dmndecisiontable"
+      extends="io/jmix/bpmflowui/view/dmndecisiontable/dmn-decision-table-list-view.xml">
+    <layout>
+        <!-- The base descriptor's buttons hbox has no id, so this one must stay id-less too: the XML
+             inheritance processor then falls back to matching the single direct <hbox> child of <layout> and
+             merges into it. Adding an id here would create a second, empty hbox instead. -->
+        <hbox>
+            <button id="openInControlBtn" action="dmnDecisionTablesGrid.openInControl"/>
+            <button id="evaluateInControlBtn" action="dmnDecisionTablesGrid.evaluate"
+                    classNames="external-action-in-control"/>
+        </hbox>
+        <dataGrid id="dmnDecisionTablesGrid">
+            <actions>
+                <!-- Declared on the grid so Jmix binds each action's target to it automatically. -->
+                <action id="openInControl" type="ctrcnt_openDmnDecisionInControl"/>
+                <action id="evaluate" type="ctrcnt_evaluateDmnDecisionInControl"/>
+            </actions>
+        </dataGrid>
+    </layout>
+</view>

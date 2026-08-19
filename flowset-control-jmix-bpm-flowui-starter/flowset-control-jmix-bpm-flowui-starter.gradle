@@ -1,0 +1,23 @@
+/*
+ * Copyright (c) Haulmont 2026. All Rights Reserved.
+ * Use is subject to license terms.
+ */
+
+base {
+    archivesName = 'flowset-control-jmix-bpm-flowui-starter'
+}
+
+jmix {
+    entitiesEnhancing {
+        enabled = false
+    }
+}
+
+dependencies {
+    api project(':flowset-control-jmix-bpm-flowui')
+
+    implementation 'io.jmix.core:jmix-core'
+    implementation 'io.jmix.data:jmix-data'
+
+    implementation 'org.springframework.boot:spring-boot-autoconfigure'
+}
