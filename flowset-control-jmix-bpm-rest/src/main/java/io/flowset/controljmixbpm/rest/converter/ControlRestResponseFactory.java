@@ -145,6 +145,9 @@ public class ControlRestResponseFactory extends RestResponseFactory {
                     variable.setValue(jmixVariableValueConverter.serializeEntityList(list));
                 }
             }
+            // Variable types other than the Jmix ones above carry no additional value info.
+            default -> {
+            }
         }
     }
 }

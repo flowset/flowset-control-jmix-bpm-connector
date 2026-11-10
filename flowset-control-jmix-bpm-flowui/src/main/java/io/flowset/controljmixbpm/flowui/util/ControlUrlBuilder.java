@@ -128,11 +128,11 @@ public class ControlUrlBuilder {
      * Collects path segments and query parameters for a single Control URL. Obtain one via
      * {@link ControlUrlBuilder#route(String)}.
      */
-    public class Builder {
+    public final class Builder {
 
-        protected final UriComponentsBuilder uriBuilder;
+        private final UriComponentsBuilder uriBuilder;
 
-        protected Builder(String route) {
+        private Builder(String route) {
             if (!StringUtils.isNotBlank(controlUiProperties.getControlUrl())) {
                 throw new IllegalStateException(
                         "Control URL is not configured, cannot build a link. Set application property 'flowset.ui.control-url'.");

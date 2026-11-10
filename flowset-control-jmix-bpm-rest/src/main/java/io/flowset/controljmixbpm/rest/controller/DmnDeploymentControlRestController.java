@@ -10,10 +10,7 @@ import io.flowset.controljmixbpm.rest.dto.response.DmnDeploymentResourceResponse
 import io.swagger.annotations.ApiParam;
 import jakarta.servlet.http.HttpServletResponse;
 import org.flowable.common.engine.api.FlowableObjectNotFoundException;
-import org.flowable.common.rest.resolver.ContentTypeResolver;
 import org.flowable.dmn.api.DmnDeployment;
-import org.flowable.dmn.api.DmnRepositoryService;
-import org.flowable.dmn.rest.service.api.DmnRestApiInterceptor;
 import org.flowable.dmn.rest.service.api.DmnRestResponseFactory;
 import org.flowable.dmn.rest.service.api.repository.DmnDeploymentResourceDataResource;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,17 +31,8 @@ import java.util.List;
 @RequestMapping("/control")
 public class DmnDeploymentControlRestController extends DmnDeploymentResourceDataResource {
 
-    @Autowired(required = false)
-    protected DmnRestApiInterceptor restApiInterceptor;
-
-    @Autowired
-    protected DmnRepositoryService dmnRepositoryService;
-
     @Autowired
     protected DmnRestResponseFactory restResponseFactory;
-
-    @Autowired
-    protected ContentTypeResolver contentTypeResolver;
 
     @GetMapping(value = "/dmn-repository/deployments/{id}/resources", produces = "application/json")
     public List<DmnDeploymentResourceResponse> getDmnDeploymentsResource(@ApiParam(name = "id") @PathVariable String id) {

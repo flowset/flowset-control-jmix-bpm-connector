@@ -9,16 +9,13 @@ import io.flowset.controljmixbpm.rest.dto.request.ControlHistoricActivityInstanc
 import io.swagger.annotations.ApiParam;
 import org.flowable.common.engine.api.query.QueryProperty;
 import org.flowable.common.rest.api.DataResponse;
-import org.flowable.engine.HistoryService;
 import org.flowable.engine.history.HistoricActivityInstanceQuery;
 import org.flowable.engine.impl.HistoricActivityInstanceQueryProperty;
-import org.flowable.rest.service.api.BpmnRestApiInterceptor;
-import org.flowable.rest.service.api.RestResponseFactory;
 import org.flowable.rest.service.api.history.HistoricActivityInstanceBaseResource;
 import org.flowable.rest.service.api.history.HistoricActivityInstanceResponse;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -34,30 +31,24 @@ import static org.flowable.common.rest.api.PaginateListUtil.paginateList;
 @RequestMapping("/control")
 public class HistoricActivityInstanceControlRestController extends HistoricActivityInstanceBaseResource {
 
-    protected static Map<String, QueryProperty> allowedSortProperties = new HashMap<>();
+    protected static final Map<String, QueryProperty> allowedSortProperties;
 
     static {
-        allowedSortProperties.put("activityId", HistoricActivityInstanceQueryProperty.ACTIVITY_ID);
-        allowedSortProperties.put("activityName", HistoricActivityInstanceQueryProperty.ACTIVITY_NAME);
-        allowedSortProperties.put("activityType", HistoricActivityInstanceQueryProperty.ACTIVITY_TYPE);
-        allowedSortProperties.put("duration", HistoricActivityInstanceQueryProperty.DURATION);
-        allowedSortProperties.put("endTime", HistoricActivityInstanceQueryProperty.END);
-        allowedSortProperties.put("executionId", HistoricActivityInstanceQueryProperty.EXECUTION_ID);
-        allowedSortProperties.put("activityInstanceId", HistoricActivityInstanceQueryProperty.HISTORIC_ACTIVITY_INSTANCE_ID);
-        allowedSortProperties.put("processDefinitionId", HistoricActivityInstanceQueryProperty.PROCESS_DEFINITION_ID);
-        allowedSortProperties.put("processInstanceId", HistoricActivityInstanceQueryProperty.PROCESS_INSTANCE_ID);
-        allowedSortProperties.put("startTime", HistoricActivityInstanceQueryProperty.START);
-        allowedSortProperties.put("tenantId", HistoricActivityInstanceQueryProperty.TENANT_ID);
+        Map<String, QueryProperty> sortProperties = new HashMap<>();
+        sortProperties.put("activityId", HistoricActivityInstanceQueryProperty.ACTIVITY_ID);
+        sortProperties.put("activityName", HistoricActivityInstanceQueryProperty.ACTIVITY_NAME);
+        sortProperties.put("activityType", HistoricActivityInstanceQueryProperty.ACTIVITY_TYPE);
+        sortProperties.put("duration", HistoricActivityInstanceQueryProperty.DURATION);
+        sortProperties.put("endTime", HistoricActivityInstanceQueryProperty.END);
+        sortProperties.put("executionId", HistoricActivityInstanceQueryProperty.EXECUTION_ID);
+        sortProperties.put("activityInstanceId", HistoricActivityInstanceQueryProperty.HISTORIC_ACTIVITY_INSTANCE_ID);
+        sortProperties.put("processDefinitionId", HistoricActivityInstanceQueryProperty.PROCESS_DEFINITION_ID);
+        sortProperties.put("processInstanceId", HistoricActivityInstanceQueryProperty.PROCESS_INSTANCE_ID);
+        sortProperties.put("startTime", HistoricActivityInstanceQueryProperty.START);
+        sortProperties.put("tenantId", HistoricActivityInstanceQueryProperty.TENANT_ID);
+
+        allowedSortProperties = Collections.unmodifiableMap(sortProperties);
     }
-
-    @Autowired(required = false)
-    protected BpmnRestApiInterceptor restApiInterceptor;
-
-    @Autowired
-    protected HistoryService historyService;
-
-    @Autowired
-    protected RestResponseFactory restResponseFactory;
 
     @PostMapping(value = "/query/historic-activity-instances", produces = "application/json")
     public DataResponse<HistoricActivityInstanceResponse> queryActivityInstances(@RequestBody ControlHistoricActivityInstanceQueryRequest queryRequest, @ApiParam(hidden = true) @RequestParam Map<String, String> allRequestParams) {
