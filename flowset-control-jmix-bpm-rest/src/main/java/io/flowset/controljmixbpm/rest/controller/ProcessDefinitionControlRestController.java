@@ -124,7 +124,8 @@ public class ProcessDefinitionControlRestController extends ProcessDefinitionCol
             restApiInterceptor.accessProcessDefinitionsWithQuery(processDefinitionQuery);
         }
 
-        return paginateList(allRequestParams, processDefinitionQuery, "name", properties, restResponseFactory::createProcessDefinitionResponseList);
+        return paginateList(allRequestParams, processDefinitionQuery, "name", properties,
+                restResponseFactory::createProcessDefinitionResponseList);
     }
 
     @PutMapping(value = "/repository/process-definitions/key/{processDefinitionKey}", produces = "application/json")
@@ -153,16 +154,17 @@ public class ProcessDefinitionControlRestController extends ProcessDefinitionCol
         throw new FlowableIllegalArgumentException("Invalid action: '" + actionRequest.getAction() + "'.");
     }
 
-    protected void activateProcessDefinitionByKey(String processDefinitionKey, boolean suspendInstances, Date date, String tenantId) {
+    protected void activateProcessDefinitionByKey(String processDefinitionKey, boolean suspendInstances,
+                                                  Date date, String tenantId) {
         if (tenantId != null && !tenantId.isEmpty()) {
             repositoryService.activateProcessDefinitionByKey(processDefinitionKey, suspendInstances, date, tenantId);
         } else {
             repositoryService.activateProcessDefinitionByKey(processDefinitionKey, suspendInstances, date);
         }
-
     }
 
-    protected void suspendProcessDefinition(String processDefinitionKey, boolean suspendInstances, Date date, String tenantId) {
+    protected void suspendProcessDefinition(String processDefinitionKey, boolean suspendInstances,
+                                            Date date, String tenantId) {
         if (tenantId != null && !tenantId.isEmpty()) {
             repositoryService.suspendProcessDefinitionByKey(processDefinitionKey, suspendInstances, date, tenantId);
         } else {
@@ -174,7 +176,9 @@ public class ProcessDefinitionControlRestController extends ProcessDefinitionCol
     protected void processControlParams(Map<String, String> allRequestParams, ProcessDefinitionQuery processDefinitionQuery) {
         // TODO: custom
         if (allRequestParams.containsKey("idIn")) {
-            processDefinitionQuery.processDefinitionIds(Arrays.stream(allRequestParams.get("idIn").split(",\\s+")).collect(Collectors.toSet()));
+            processDefinitionQuery.processDefinitionIds(Arrays.stream(allRequestParams.get("idIn")
+                            .split(",\\s*"))
+                    .collect(Collectors.toSet()));
         }
     }
 }

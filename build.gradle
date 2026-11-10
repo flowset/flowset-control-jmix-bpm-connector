@@ -8,12 +8,12 @@ buildscript {
         gradlePluginPortal()
     }
     dependencies {
-        classpath "io.jmix.gradle:jmix-gradle-plugin:3.0.0"
+        classpath 'io.jmix.gradle:jmix-gradle-plugin:3.0.3'
     }
 }
 
 group = 'io.flowset.control'
-version = '0.0.1-SNAPSHOT'
+version = '1.0.0-SNAPSHOT'
 
 subprojects {
     apply plugin: 'java-library'
@@ -35,7 +35,7 @@ subprojects {
     }
 
     jmix {
-        bomVersion = '3.0.0'
+        bomVersion = '3.0.3'
         projectId = 'ctrcnt'
     }
 
