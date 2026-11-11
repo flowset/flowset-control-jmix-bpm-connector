@@ -15,7 +15,7 @@
         <dataGrid id="processDefinitionsGrid">
             <actions>
                 <!-- Declared on the grid so Jmix binds the action's target to it automatically. -->
-                <action id="openInControl" type="ctrcnt_openProcessDefinitionInControl"/>
+                <action id="openInControl" type="fsc_openProcessDefinitionInControl"/>
             </actions>
         </dataGrid>
     </layout>

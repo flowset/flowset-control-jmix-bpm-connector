@@ -17,7 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class OpenProcessDefinitionDetailInControlAction
         extends AbstractOpenInControlDetailAction<OpenProcessDefinitionDetailInControlAction, ProcessDefinitionData> {
 
-    public static final String ID = "ctrcnt_openProcessDefinitionDetailInControl";
+    public static final String ID = "fsc_openProcessDefinitionDetailInControl";
 
     public OpenProcessDefinitionDetailInControlAction() {
         this(ID);

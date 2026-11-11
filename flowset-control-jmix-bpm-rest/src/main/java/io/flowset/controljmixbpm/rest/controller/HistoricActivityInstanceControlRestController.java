@@ -27,7 +27,7 @@ import static org.flowable.common.rest.api.PaginateListUtil.paginateList;
  *     <li>/query/historic-activity-instances</li> - adds additional filtering options like "finishedBefore", "finishedAfter"
  * </ol>
  */
-@RestController
+@RestController("fsc_HistoricActivityInstanceControlRestController")
 @RequestMapping("/control")
 public class HistoricActivityInstanceControlRestController extends HistoricActivityInstanceBaseResource {
 

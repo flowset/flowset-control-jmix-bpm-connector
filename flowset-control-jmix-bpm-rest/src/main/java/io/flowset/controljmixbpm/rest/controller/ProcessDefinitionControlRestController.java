@@ -33,7 +33,7 @@ import static org.flowable.common.rest.api.PaginateListUtil.paginateList;
  *     <li><code>/repository/process-definitions/key/{processDefinitionKey}</code> to support activate/suspend by key</li>
  * </ol>
  */
-@RestController
+@RestController("fsc_ProcessDefinitionControlRestController")
 @RequestMapping("/control")
 public class ProcessDefinitionControlRestController extends ProcessDefinitionCollectionResource {
 

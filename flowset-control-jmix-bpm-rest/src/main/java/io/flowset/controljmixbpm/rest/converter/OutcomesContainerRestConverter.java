@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
 import tools.jackson.core.JacksonException;
 import tools.jackson.databind.ObjectMapper;
 
-@Component("control_OutcomesContainerRestConverter")
+@Component("fsc_OutcomesContainerRestConverter")
 public class OutcomesContainerRestConverter implements RestVariableConverter {
     private static final Logger log = LoggerFactory.getLogger(JmixEntityItemValue.class);
     

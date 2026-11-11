@@ -21,7 +21,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class EvaluateDmnDecisionInControlAction
         extends AbstractOpenInControlListAction<EvaluateDmnDecisionInControlAction, DmnDecisionData> {
 
-    public static final String ID = "ctrcnt_evaluateDmnDecisionInControl";
+    public static final String ID = "fsc_evaluateDmnDecisionInControl";
 
     public EvaluateDmnDecisionInControlAction() {
         this(ID);

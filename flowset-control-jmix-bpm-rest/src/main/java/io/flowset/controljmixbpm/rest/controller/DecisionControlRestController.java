@@ -30,7 +30,7 @@ import static org.flowable.common.rest.api.PaginateListUtil.paginateList;
  *     <li><code>/dmn-repository/decisions</code> with support for filtering "idIn"</li>
  * </ol>
  */
-@RestController
+@RestController("fsc_DecisionControlRestController")
 @RequestMapping("/control")
 public class DecisionControlRestController extends DecisionCollectionResource {
 

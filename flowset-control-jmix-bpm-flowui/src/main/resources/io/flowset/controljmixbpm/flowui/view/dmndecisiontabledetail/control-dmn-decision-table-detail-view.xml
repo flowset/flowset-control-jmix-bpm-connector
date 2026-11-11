@@ -9,7 +9,7 @@
       messagesGroup="io.jmix.bpmflowui.view.dmndecisiontable"
       extends="io/jmix/bpmflowui/view/dmndecisiontable/dmn-decision-table-detail-view.xml">
     <actions>
-        <action id="openInControl" type="ctrcnt_openDmnDecisionDetailInControl"/>
+        <action id="openInControl" type="fsc_openDmnDecisionDetailInControl"/>
     </actions>
     <layout>
         <vbox>

@@ -16,9 +16,9 @@ import org.springframework.web.util.UriComponentsBuilder;
  * Builds deep links into Flowset Control.
  * <p>
  * This is the single place that knows Control's routes and the {@code engineSource} query parameter identifying
- * the engine a link should be resolved against. The engine is taken from {@code flowset.ui.engine-url} and
+ * the engine a link should be resolved against. The engine is taken from {@code flowset.control.jmix-bpm.ui.engine-url} and
  * falls back to the current application's context path, so a deployment that is reachable at the same address
- * from Control does not need to configure anything beyond {@code flowset.ui.control-url}.
+ * from Control does not need to configure anything beyond {@code flowset.control.jmix-bpm.ui.control-url}.
  * <p>
  * Example of usage:
  * <pre>{@code
@@ -31,7 +31,7 @@ import org.springframework.web.util.UriComponentsBuilder;
  * }</pre>
  * Use {@link #route(String)} for a Control route not covered by a convenience method.
  */
-@Component("ctrcnt_ControlUrlBuilder")
+@Component("fsc_ControlUrlBuilder")
 public class ControlUrlBuilder {
 
     public static final String PROCESS_DEFINITIONS_ROUTE = "bpm/process-definitions";
@@ -135,7 +135,7 @@ public class ControlUrlBuilder {
         private Builder(String route) {
             if (!StringUtils.isNotBlank(controlUiProperties.getControlUrl())) {
                 throw new IllegalStateException(
-                        "Control URL is not configured, cannot build a link. Set application property 'flowset.ui.control-url'.");
+                        "Control URL is not configured, cannot build a link. Set application property 'flowset.control.jmix-bpm.ui.control-url'.");
             }
             this.uriBuilder = UriComponentsBuilder
                     .fromUriString(StringUtils.stripEnd(controlUiProperties.getControlUrl(), "/"))

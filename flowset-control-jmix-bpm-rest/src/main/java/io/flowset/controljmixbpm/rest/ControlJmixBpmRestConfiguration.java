@@ -27,7 +27,7 @@ import java.util.List;
 @PropertySource(name = "io.flowset.controljmixbpm.rest", value = "classpath:/io/flowset/controljmixbpm/rest/module.properties")
 public class ControlJmixBpmRestConfiguration {
 
-    @Bean("ctrcnt_RestResponseFactory")
+    @Bean("fsc_RestResponseFactory")
     public RestResponseFactory restResponseFactory(ObjectMapper objectMapper,
                                                    ObjectProvider<RestVariableConverter> variableConverters,
                                                    ControlJmixVariableValueConverter converter) {
@@ -38,7 +38,7 @@ public class ControlJmixBpmRestConfiguration {
         return responseFactory;
     }
 
-    @Bean("ctrcnt_DmnRestResponseFactory")
+    @Bean("fsc_DmnRestResponseFactory")
     public DmnRestResponseFactory dmnRestResponseFactory(ObjectProvider<RestVariableConverter> variableConverters) {
         ControlDmnRestResponseFactory responseFactory = new ControlDmnRestResponseFactory();
         List<RestVariableConverter> additionalVariableConverters = variableConverters.orderedStream().toList();

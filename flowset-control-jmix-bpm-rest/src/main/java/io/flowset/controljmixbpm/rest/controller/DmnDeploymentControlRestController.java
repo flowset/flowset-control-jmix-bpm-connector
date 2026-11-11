@@ -27,7 +27,7 @@ import java.util.List;
  *     <li><code>/control/dmn-repository/deployments/{id}/resources</code>- returns resource list for a DMN deployment</li>
  * </ol>
  */
-@RestController
+@RestController("fsc_DmnDeploymentControlRestController")
 @RequestMapping("/control")
 public class DmnDeploymentControlRestController extends DmnDeploymentResourceDataResource {
 

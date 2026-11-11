@@ -47,7 +47,7 @@ subprojects {
 
     jmix {
         bomVersion = '3.0.3'
-        projectId = 'ctrcnt'
+        projectId = 'fsc'
     }
 
     group = this.group

@@ -20,7 +20,7 @@ import tools.jackson.core.JacksonException;
 import tools.jackson.databind.ObjectMapper;
 
 @Order
-@Component("control_JmixEntityVariableRestConverter")
+@Component("fsc_JmixEntityVariableRestConverter")
 public class JmixEntityVariableRestConverter implements RestVariableConverter {
     private static final Logger log = LoggerFactory.getLogger(JmixEntityVariableRestConverter.class);
 

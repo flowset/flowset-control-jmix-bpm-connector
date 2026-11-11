@@ -23,7 +23,7 @@ import java.util.Map;
  *     <li>/control/runtime/process-instances/{processInstanceId}/change-state with supporting for process variables</li>
  * </ul>
  */
-@RestController
+@RestController("fsc_ProcessInstanceRestController")
 @RequestMapping("/control")
 public class ProcessInstanceRestController extends BaseProcessInstanceResource {
 

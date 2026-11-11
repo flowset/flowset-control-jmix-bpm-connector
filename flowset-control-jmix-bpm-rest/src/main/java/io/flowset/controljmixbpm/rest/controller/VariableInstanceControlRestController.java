@@ -34,7 +34,7 @@ import java.io.ObjectOutputStream;
  *     <li>/control/history/historic-variable-instances/{varInstanceId}/data</li>
  * </ol>
  */
-@RestController
+@RestController("fsc_VariableInstanceControlRestController")
 @RequestMapping("/control")
 public class VariableInstanceControlRestController extends VariableInstanceBaseResource {
 
