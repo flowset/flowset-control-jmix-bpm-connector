@@ -17,7 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 @ActionType(OpenAllTasksInControlAction.ID)
 public class OpenAllTasksInControlAction extends AbstractOpenInControlAction<OpenAllTasksInControlAction> {
 
-    public static final String ID = "ctrcnt_openAllTasksInControl";
+    public static final String ID = "fsc_openAllTasksInControl";
 
     public OpenAllTasksInControlAction() {
         this(ID);

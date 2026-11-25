@@ -34,6 +34,7 @@ public class ControlDmnRestResponseFactory extends DmnRestResponseFactory {
      */
     public List<DmnDeploymentResourceResponse> createDmnDeploymentResourceResponseList(String deploymentId, List<String> resourceList, ContentTypeResolver contentTypeResolver) {
         DmnRestUrlBuilder urlBuilder = createUrlBuilder();
+
         // Add additional metadata to the artifact-strings before returning
         List<DmnDeploymentResourceResponse> responseList = new ArrayList<>(resourceList.size());
         for (String resourceId : resourceList) {

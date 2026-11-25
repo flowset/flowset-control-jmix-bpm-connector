@@ -13,7 +13,7 @@ import io.jmix.flowui.view.ViewDescriptor;
 
 /**
  * Adds the "Open in Control" button to the stock decision table detail view. The button and its
- * {@code ctrcnt_openDmnDecisionDetailInControl} action are declared in the view descriptor.
+ * {@code fsc_openDmnDecisionDetailInControl} action are declared in the view descriptor.
  */
 @Route(value = "bpm/decision-tables/:id", layout = DefaultMainViewParent.class)
 @ViewController(id = "bpm_DmnDecisionTableDetailView")

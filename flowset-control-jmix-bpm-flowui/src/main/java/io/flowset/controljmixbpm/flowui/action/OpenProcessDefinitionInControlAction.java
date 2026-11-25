@@ -23,7 +23,7 @@ import java.util.function.Supplier;
 public class OpenProcessDefinitionInControlAction
         extends AbstractOpenInControlListAction<OpenProcessDefinitionInControlAction, ProcessDefinitionData> {
 
-    public static final String ID = "ctrcnt_openProcessDefinitionInControl";
+    public static final String ID = "fsc_openProcessDefinitionInControl";
 
     protected Supplier<String> nameFilterProvider;
     protected Supplier<String> keyFilterProvider;

@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) Haulmont 2026. All Rights Reserved.
+ * Use is subject to license terms.
+ */
+
 rootProject.name = 'flowset-control-jmix-bpm-connector'
 
 include 'flowset-control-jmix-bpm-rest'

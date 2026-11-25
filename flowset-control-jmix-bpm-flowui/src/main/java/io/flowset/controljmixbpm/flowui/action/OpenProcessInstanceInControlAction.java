@@ -26,7 +26,7 @@ import java.util.function.Supplier;
 public class OpenProcessInstanceInControlAction
         extends AbstractOpenInControlListAction<OpenProcessInstanceInControlAction, ProcessInstanceData> {
 
-    public static final String ID = "ctrcnt_openProcessInstanceInControl";
+    public static final String ID = "fsc_openProcessInstanceInControl";
 
     /**
      * Completion-state values of the BPM view's state filter.

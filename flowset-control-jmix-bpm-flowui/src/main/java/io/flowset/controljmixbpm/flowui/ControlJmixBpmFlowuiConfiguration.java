@@ -31,7 +31,7 @@ import java.util.stream.Collectors;
 @PropertySource(name = "io.flowset.controljmixbpm.flowui", value = "classpath:/io/flowset/controljmixbpm/flowui/module.properties")
 public class ControlJmixBpmFlowuiConfiguration {
 
-    @Bean("ctrcnt_ControlJmixBpmViewControllers")
+    @Bean("fsc_ControlJmixBpmViewControllers")
     public ViewControllersConfiguration screens(final ApplicationContext applicationContext,
                                                 final AnnotationScanMetadataReaderFactory metadataReaderFactory,
                                                 final ControlJmixBpmUiProperties controlJmixBpmUiProperties) {
@@ -54,7 +54,7 @@ public class ControlJmixBpmFlowuiConfiguration {
         return viewControllers;
     }
 
-    @Bean("ctrcnt_ControlJmixBpmActions")
+    @Bean("fsc_ControlJmixBpmActions")
     public ActionsConfiguration actions(final ApplicationContext applicationContext,
                                         final AnnotationScanMetadataReaderFactory metadataReaderFactory) {
         final ActionsConfiguration actions

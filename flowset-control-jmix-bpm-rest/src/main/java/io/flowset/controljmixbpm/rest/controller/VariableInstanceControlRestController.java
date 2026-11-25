@@ -11,8 +11,6 @@ import jakarta.servlet.http.HttpServletResponse;
 import org.flowable.common.engine.api.FlowableException;
 import org.flowable.common.engine.api.FlowableObjectNotFoundException;
 import org.flowable.engine.HistoryService;
-import org.flowable.engine.RuntimeService;
-import org.flowable.rest.service.api.BpmnRestApiInterceptor;
 import org.flowable.rest.service.api.RestResponseFactory;
 import org.flowable.rest.service.api.engine.variable.RestVariable;
 import org.flowable.rest.service.api.history.HistoricVariableInstanceResponse;
@@ -36,15 +34,10 @@ import java.io.ObjectOutputStream;
  *     <li>/control/history/historic-variable-instances/{varInstanceId}/data</li>
  * </ol>
  */
-@RestController
+@RestController("fsc_VariableInstanceControlRestController")
 @RequestMapping("/control")
 public class VariableInstanceControlRestController extends VariableInstanceBaseResource {
 
-    @Autowired(required = false)
-    protected BpmnRestApiInterceptor restApiInterceptor;
-
-    @Autowired
-    protected RuntimeService runtimeService;
     @Autowired
     protected HistoryService historyService;
 

@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
  *     <li><code>/control/repository/deployments/{deploymentId}/resourcedata</code>- returns resource data for a BPMN deployment</li>
  * </ol>
  */
-@RestController
+@RestController("fsc_DeploymentControlRestController")
 @RequestMapping("/control")
 public class DeploymentControlRestController extends DeploymentResourceDataResource {
 

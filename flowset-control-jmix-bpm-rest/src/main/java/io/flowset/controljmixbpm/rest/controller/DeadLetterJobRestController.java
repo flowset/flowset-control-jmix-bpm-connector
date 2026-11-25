@@ -33,7 +33,7 @@ import static org.flowable.common.rest.api.PaginateListUtil.paginateList;
  *     <li>/control/management/deadletter-jobs with support of filtering by process definition key</li>
  * </ol>
  */
-@RestController
+@RestController("fsc_DeadLetterJobRestController")
 @RequestMapping("/control")
 public class DeadLetterJobRestController {
     @Autowired

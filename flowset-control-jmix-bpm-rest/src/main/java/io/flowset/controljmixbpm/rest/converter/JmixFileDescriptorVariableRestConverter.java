@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
 // must have higher precedence than that general entity converter so a file variable is reported as "file-description"
 // rather than "entity".
 @Order(Ordered.LOWEST_PRECEDENCE - 10)
-@Component("control_JmixFileDescriptorVariableRestConverter")
+@Component("fsc_JmixFileDescriptorVariableRestConverter")
 public class JmixFileDescriptorVariableRestConverter implements RestVariableConverter {
 
     @Override

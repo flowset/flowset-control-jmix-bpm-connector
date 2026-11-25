@@ -19,7 +19,7 @@ dependencies {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
     }
     testImplementation 'org.springframework.boot:spring-boot-starter-web'
-  
+
     testImplementation "io.jmix.bpm:jmix-bpm-flowui:${jmixBpmVersion}"
 
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'

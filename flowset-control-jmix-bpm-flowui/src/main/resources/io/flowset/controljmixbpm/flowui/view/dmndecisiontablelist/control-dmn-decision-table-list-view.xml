@@ -20,8 +20,8 @@
         <dataGrid id="dmnDecisionTablesGrid">
             <actions>
                 <!-- Declared on the grid so Jmix binds each action's target to it automatically. -->
-                <action id="openInControl" type="ctrcnt_openDmnDecisionInControl"/>
-                <action id="evaluate" type="ctrcnt_evaluateDmnDecisionInControl"/>
+                <action id="openInControl" type="fsc_openDmnDecisionInControl"/>
+                <action id="evaluate" type="fsc_evaluateDmnDecisionInControl"/>
             </actions>
         </dataGrid>
     </layout>

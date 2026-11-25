@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * Configuration of the link between this application and a Flowset Control instance.
  */
-@ConfigurationProperties(prefix = "flowset.ui")
+@ConfigurationProperties(prefix = "flowset.control.jmix-bpm.ui")
 public class ControlJmixBpmUiProperties {
     /**
      * The URL of the Flowset Control UI.
@@ -31,12 +31,12 @@ public class ControlJmixBpmUiProperties {
     protected List<String> excludedViews;
 
     /**
-     * Bound by Spring from the {@code flowset.ui} properties; a parameter is {@code null} when the
+     * Bound by Spring from the {@code flowset.control.jmix-bpm.ui} properties; a parameter is {@code null} when the
      * corresponding property is absent.
      *
-     * @param controlUrl    value of {@code flowset.ui.control-url}
-     * @param engineUrl     value of {@code flowset.ui.engine-url}
-     * @param excludedViews value of {@code flowset.ui.excluded-views}
+     * @param controlUrl    value of {@code flowset.control.jmix-bpm.ui.control-url}
+     * @param engineUrl     value of {@code flowset.control.jmix-bpm.ui.engine-url}
+     * @param excludedViews value of {@code flowset.control.jmix-bpm.ui.excluded-views}
      */
     public ControlJmixBpmUiProperties(String controlUrl,
                                       String engineUrl,
@@ -48,7 +48,7 @@ public class ControlJmixBpmUiProperties {
 
     /**
      * Returns the base URL of the Flowset Control UI that deep links are built against, as configured by
-     * {@code flowset.ui.control-url}. Blank when this application is not integrated with Control.
+     * {@code flowset.control.jmix-bpm.ui.control-url}. Blank when this application is not integrated with Control.
      *
      * @return the Control UI URL, blank if none is configured
      */
@@ -66,7 +66,7 @@ public class ControlJmixBpmUiProperties {
     }
 
     /**
-     * Returns the URL identifying this engine to Control, as configured by {@code flowset.ui.engine-url}. It is
+     * Returns the URL identifying this engine to Control, as configured by {@code flowset.control.jmix-bpm.ui.engine-url}. It is
      * passed to Control as the {@code engineSource} query parameter so Control resolves a link against the right
      * engine. When blank, link building falls back to this application's own context path, which is correct
      * whenever Control reaches the application at the same address the application serves itself on.
@@ -88,7 +88,7 @@ public class ControlJmixBpmUiProperties {
 
     /**
      * Returns the ids of the standard Jmix BPM views this add-on must leave alone, as configured by
-     * {@code flowset.ui.excluded-views}. The add-on works by replacing those views with its own versions
+     * {@code flowset.control.jmix-bpm.ui.excluded-views}. The add-on works by replacing those views with its own versions
      * carrying the Control buttons; list a view id here when the application replaces it itself, then declare
      * the action in the application's own descriptor.
      *

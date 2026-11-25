@@ -23,7 +23,7 @@ import java.util.function.Supplier;
 public class OpenDmnDecisionInControlAction
         extends AbstractOpenInControlListAction<OpenDmnDecisionInControlAction, DmnDecisionData> {
 
-    public static final String ID = "ctrcnt_openDmnDecisionInControl";
+    public static final String ID = "fsc_openDmnDecisionInControl";
 
     protected Supplier<String> nameFilterProvider;
     protected Supplier<String> keyFilterProvider;

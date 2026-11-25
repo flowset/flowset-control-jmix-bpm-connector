@@ -13,7 +13,7 @@ import io.jmix.flowui.view.ViewDescriptor;
 
 /**
  * Adds the "Open in Control" button to the stock process instance detail view. The button and its
- * {@code ctrcnt_openProcessInstanceDetailInControl} action are declared in the view descriptor.
+ * {@code fsc_openProcessInstanceDetailInControl} action are declared in the view descriptor.
  */
 @Route(value = "bpm/process-instances/:id", layout = DefaultMainViewParent.class)
 @ViewController(id = "bpm_ProcessInstanceData.detail")

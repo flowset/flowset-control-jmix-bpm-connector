@@ -10,7 +10,7 @@
       extends="io/jmix/bpmflowui/view/processinstance/process-instance-detail-view.xml">
     <actions>
         <!-- A view-level action: Jmix binds its target to this view, from which it reads the edited entity. -->
-        <action id="openInControl" type="ctrcnt_openProcessInstanceDetailInControl"/>
+        <action id="openInControl" type="fsc_openProcessInstanceDetailInControl"/>
     </actions>
     <layout>
         <!-- 'upperPanel' must be repeated: the XML inheritance processor matches direct children only. -->

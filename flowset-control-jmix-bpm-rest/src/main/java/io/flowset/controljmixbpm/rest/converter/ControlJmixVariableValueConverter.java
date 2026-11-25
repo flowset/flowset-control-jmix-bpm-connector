@@ -19,7 +19,7 @@ import tools.jackson.databind.ObjectMapper;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Component("control_JmixVariableConverter")
+@Component("fsc_JmixVariableConverter")
 public class ControlJmixVariableValueConverter {
     private static final Logger log = LoggerFactory.getLogger(ControlJmixVariableValueConverter.class);
 

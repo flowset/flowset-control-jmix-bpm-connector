@@ -10,7 +10,7 @@
       extends="io/jmix/bpmflowui/view/processdefinition/process-definition-detail-view.xml">
     <actions>
         <!-- A view-level action: Jmix binds its target to this view, from which it reads the edited entity. -->
-        <action id="openInControl" type="ctrcnt_openProcessDefinitionDetailInControl"/>
+        <action id="openInControl" type="fsc_openProcessDefinitionDetailInControl"/>
     </actions>
     <layout>
         <!-- The base descriptor nests its buttons panel this deep; every level must be repeated by id for
