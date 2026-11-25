@@ -5,6 +5,11 @@ application for monitoring and operating BPM engines. It exposes the REST endpoi
 this engine, and adds *Open in Control* buttons to the standard Jmix BPM screens so users can jump from a process
 instance, definition or task straight to the same record in Control.
 
+> [!WARNING]
+> **Early access.** `1.0.0-eap.1` is an early access preview of the add-on. Endpoints, configuration properties and
+> action types may still change before the 1.0.0 release, so it is not recommended for production use yet.
+> Please report problems and feedback in [GitHub Issues](https://github.com/flowset/flowset-control-jmix-bpm-connector/issues).
+
 ## Modules
 
 | Starter | What it adds to your application |
@@ -16,7 +21,7 @@ instance, definition or task straight to the same record in Control.
 
 | Integration add-on | Jmix BPM | Flowable |
 |---|---|---|
-| 1.0.0-SNAPSHOT | 3.0.x, 3.1.x | 8.0.x |
+| 1.0.0-eap.1 (early access) | 3.0.x, 3.1.x | 8.0.x |
 
 ## Installation
 
@@ -36,8 +41,8 @@ repositories {
 Then declare the starters you need:
 
 ```groovy
-implementation 'io.flowset.control:flowset-control-jmix-bpm-rest-starter:1.0.0-SNAPSHOT'
-implementation 'io.flowset.control:flowset-control-jmix-bpm-flowui-starter:1.0.0-SNAPSHOT'
+implementation 'io.flowset.control:flowset-control-jmix-bpm-rest-starter:1.0.0-eap.1'
+implementation 'io.flowset.control:flowset-control-jmix-bpm-flowui-starter:1.0.0-eap.1'
 ```
 
 Adding the dependency is enough — the add-on activates itself, with no configuration class to register.
